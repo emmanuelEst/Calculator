@@ -46,4 +46,8 @@
 #num-buttons {
     display: grid;
     grid-area: numbers;
+    grid-template-areas: "seven eight nine"
+        "four five six"
+        "one two three"
+        "negative zero decimal";
 }

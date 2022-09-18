@@ -26,22 +26,17 @@ function operate(operator, a, b) {
 }
 
 // Creates event listeners
-const toggleEventListeners = (obj, eventType, func, toggle) => {
+// 'array' parameter has to be an array; singular DOM elements should be in an array; e.g toggleEventListeners([element]...)
+const toggleEventListeners = (array, eventType, func, toggle) => {
     if (toggle === 'add') {
-        if (obj.length === undefined) {
-            obj.addEventListener(eventType, func);
-        } else {
-            obj.forEach(element => {
-                element.addEventListener(eventType, func);
-            });
-        }
+        array.forEach(element => {
+            element.addEventListener(eventType, func);
+        });
+
     } else if (toggle === 'remove') {
-        if (obj.length === undefined) {
-            obj.removeEventListener(eventType, func);
-        } else {
-            obj.forEach(element => {
-                element.removeEventListener(eventType, func);
-            });
-        }
+        array.forEach(element => {
+            element.removeEventListener(eventType, func);
+        });
+
     }
 };

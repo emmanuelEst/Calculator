@@ -9,3 +9,41 @@
 #subtext {
     font-size: 1.2rem;
 }
+
+#calculator {
+    display: grid;
+    grid-template-areas: "clear clear clear add"
+        "numbers numbers numbers subtract"
+        "numbers numbers numbers multiply"
+        "numbers numbers numbers divide"
+        "numbers numbers numbers equals";
+}
+
+#clear-btn {
+    grid-area: clear;
+}
+
+#add-btn {
+    grid-area: add;
+}
+
+#subtract-btn {
+    grid-area: subtract;
+}
+
+#multiply-btn {
+    grid-area: multiply;
+}
+
+#divide-btn {
+    grid-area: divide;
+}
+
+#equals-btn {
+    grid-area: equals;
+}
+
+#num-buttons {
+    display: grid;
+    grid-area: numbers;
+}

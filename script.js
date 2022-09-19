@@ -70,7 +70,7 @@ const equation = {
 
 const getNumberAndSign = (event) => {
     output.textContent += event.target.innerHTML;
-    equation.operands[0] = output.textContent.slice(0, (output.textContent.length - 1));
+    equation.operands[0] = Number(output.textContent.slice(0, (output.textContent.length - 1)));
     equation.sign = output.textContent.slice(output.textContent.length - 1);
     topOutput.textContent += output.textContent;
     clearText();
@@ -80,3 +80,13 @@ const getNumberAndSign = (event) => {
 const signs = document.querySelectorAll('.signs');
 toggleEventListeners(signs, 'click', getNumberAndSign, 'add');
 
+// equates expression
+const equalsBtn = document.querySelector('#equals-btn');
+const evaluate = () => {
+    equation.operands[1] = Number(output.textContent);
+    topOutput.textContent += output.textContent;
+    topOutput.textContent += ' =';
+    output.textContent = operate(equation.sign, equation.operands[0], equation.operands[1]);
+}
+
+toggleEventListeners([equalsBtn], 'click', evaluate, 'add');

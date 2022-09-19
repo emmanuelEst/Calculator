@@ -57,3 +57,23 @@ const clearText = () => {
 }
 
 toggleEventListeners([clearBtn], 'click', clearText, 'add');
+
+// Object holds a and b terms, operator sign, and results of operation
+const equation = {
+    operands: [],
+    sign: '',
+    result: undefined,
+}
+
+// function retrieves number before the sign and the sign itself
+
+const getNumberAndSign = (event) => {
+    output.textContent += event.target.innerHTML;
+    equation.operands[0] = output.textContent.slice(0, (output.textContent.length - 1));
+    equation.sign = output.textContent.slice(output.textContent.length - 1);
+}
+
+// Create sign event listeners
+const signs = document.querySelectorAll('.signs');
+toggleEventListeners(signs, 'click', getNumberAndSign, 'add');
+

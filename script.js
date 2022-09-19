@@ -40,3 +40,12 @@ const toggleEventListeners = (array, eventType, func, toggle) => {
 
     }
 };
+
+// write number to output 
+const output = document.querySelector('#output')
+const numberButtons = document.querySelectorAll('.number');
+toggleEventListeners(numberButtons, 'click', addText, 'add'); // adds event listeners to all buttons with a 'number' class
+
+function addText(event) {
+    output.textContent += event.target.innerHTML;
+}

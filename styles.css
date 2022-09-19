@@ -16,13 +16,26 @@
     align-items: center;
 }
 
+#top-output,
 #output {
-    width: 498px;
-    height: 21px;
+    width: 493px;
     border: solid 1px black;
     text-align: right;
     font-size: 1.3rem;
-    padding-top: 79px;
+    padding-right: 5px;
+}
+
+#top-output {
+    height: 25px;
+    padding-bottom: 20px;
+    border-bottom: none;
+    color: gray;
+}
+
+#output {
+    height: 25px;
+    padding-top: 20px;
+    border-top: none;
 }
 
 #calculator-btns {

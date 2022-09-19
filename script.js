@@ -49,3 +49,11 @@ toggleEventListeners(numberButtons, 'click', addText, 'add'); // adds event list
 function addText(event) {
     output.textContent += event.target.innerHTML;
 }
+
+// clears the string text in 'output' div
+const clearBtn = document.querySelector('#clear-btn');
+const clearText = () => {
+    output.textContent = '';
+}
+
+toggleEventListeners([clearBtn], 'click', clearText, 'add');

@@ -43,6 +43,7 @@ const toggleEventListeners = (array, eventType, func, toggle) => {
 
 // write number to output 
 const output = document.querySelector('#output')
+const topOutput = document.querySelector('#top-output');
 const numberButtons = document.querySelectorAll('.number');
 toggleEventListeners(numberButtons, 'click', addText, 'add'); // adds event listeners to all buttons with a 'number' class
 
@@ -71,6 +72,8 @@ const getNumberAndSign = (event) => {
     output.textContent += event.target.innerHTML;
     equation.operands[0] = output.textContent.slice(0, (output.textContent.length - 1));
     equation.sign = output.textContent.slice(output.textContent.length - 1);
+    topOutput.textContent += output.textContent;
+    clearText();
 }
 
 // Create sign event listeners

@@ -52,12 +52,23 @@ function addText(event) {
 }
 
 // clears the string text in 'output' div
-const clearBtn = document.querySelector('#clear-btn');
 const clearText = () => {
     output.textContent = '';
 }
 
-toggleEventListeners([clearBtn], 'click', clearText, 'add');
+// clears all values in equation object 
+const clearBtn = document.querySelector('#clear-btn');
+
+const clearAll = () => {
+    equation.operands = [];
+    equation.sign = '';
+    equation.result = undefined;
+    equation.signCalledCheck = false;
+
+    output.textContent = '';
+    topOutput.textContent = '';
+}
+toggleEventListeners([clearBtn], 'click', clearAll, 'add');
 
 // Object holds a and b terms, operator sign, a check if a sign has been called
 const equation = {

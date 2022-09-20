@@ -12,16 +12,16 @@ const divide = (a, b) => a / b;
 
 function operate(operator, a, b) {
     if (operator === '+') {
-        return add(a, b);
+        return Math.round(add(a, b) * 100) / 100;
     }
     if (operator === '-') {
-        return subtract(a, b);
+        return Math.round(subtract(a, b) * 100) / 100;
     }
     if (operator === '*') {
-        return multiply(a, b);
+        return Math.round(multiply(a, b) * 100) / 100;
     }
     if (operator === '/') {
-        return divide(a, b);
+        return Math.round(divide(a, b) * 100) / 100;
     }
 }
 

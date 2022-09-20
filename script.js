@@ -102,8 +102,9 @@ const getNumberAndFormatOutputs = (event) => {
         // This happens because evaluate needs the previous operator so +6 can execute 
         // then the sign is changed for if the equals button is pressed then *10 gets added to the previous result
         equation.sign = event.target.innerHTML;
-        topOutput.textContent += equation.sign;
 
+        topOutput.textContent = equation.operands[0];
+        topOutput.textContent += equation.sign;
     }
 }
 
@@ -115,12 +116,13 @@ toggleEventListeners(signs, 'click', getNumberAndFormatOutputs, 'add');
 const equalsBtn = document.querySelector('#equals-btn');
 function evaluate() {
     equation.operands[1] = Number(output.textContent);
-    topOutput.textContent += output.textContent;
+
     // result is added to the 0 index in operands | will only show if it is called by the 'equals' button | see line 85-88
     equation.operands[0] = operate(equation.sign, equation.operands[0], equation.operands[1]);
     equation.result = equation.operands[0];
+
     output.textContent = equation.operands[0];
-    console.log(equation);
+
 }
 
 toggleEventListeners([equalsBtn], 'click', evaluate, 'add');

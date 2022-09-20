@@ -120,6 +120,10 @@ function evaluate() {
     } else {
 
         equation.operands[1] = Number(output.textContent);
+        if (equation.operands[1] === 0 && equation.sign === '/') {
+            output.textContent = 'Error: Cannot divide by zero';
+            return;
+        }
         if (equation.operands[0] === undefined) {
             output.textContent = `Result = ${output.textContent}`;
         } else {

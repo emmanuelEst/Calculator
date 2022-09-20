@@ -59,34 +59,57 @@ const clearText = () => {
 
 toggleEventListeners([clearBtn], 'click', clearText, 'add');
 
-// Object holds a and b terms, operator sign, and results of operation
+// Object holds a and b terms, operator sign, a check if a sign has been called
 const equation = {
     operands: [],
     sign: '',
     result: undefined,
+    signCalledCheck: false,
 }
 
 // function retrieves number before the sign and the sign itself
 
-const getNumberAndSign = (event) => {
-    output.textContent += event.target.innerHTML;
-    equation.operands[0] = Number(output.textContent.slice(0, (output.textContent.length - 1)));
-    equation.sign = output.textContent.slice(output.textContent.length - 1);
-    topOutput.textContent += output.textContent;
-    clearText();
+const getNumberAndFormatOutputs = (event) => {
+    // Check allows for operator chaining
+    if (equation.signCalledCheck === false) {
+        // Adds the sign to the textContent | does not get show in output | is shown with line 80 but in topOutput
+        output.textContent += event.target.innerHTML;
+
+        equation.operands[0] = Number(output.textContent.slice(0, (output.textContent.length - 1)));
+        equation.signCalledCheck = true;
+        equation.sign = event.target.innerHTML;
+        topOutput.textContent += output.textContent;
+
+        // once a sign is clicked the output is cleared and shown in topOutput
+        clearText();
+    } else {
+        evaluate();
+        clearText();
+        // assigns sign after evaluate is called | assigning before evaluate is called breaks the chaining effect
+        // e.g 2+2, +6 , *10 would result in 240 | it should return 100
+        // 2+2 would evaluate correctly, but when +6 is entered followed by *10, it would evaluate 4*6 then 24*10
+        // This happens because evaluate needs the previous operator so +6 can execute 
+        // then the sign is changed for if the equals button is pressed then *10 gets added to the previous result
+        equation.sign = event.target.innerHTML;
+        topOutput.textContent += equation.sign;
+
+    }
 }
 
 // Create sign event listeners
 const signs = document.querySelectorAll('.signs');
-toggleEventListeners(signs, 'click', getNumberAndSign, 'add');
+toggleEventListeners(signs, 'click', getNumberAndFormatOutputs, 'add');
 
 // equates expression
 const equalsBtn = document.querySelector('#equals-btn');
-const evaluate = () => {
+function evaluate() {
     equation.operands[1] = Number(output.textContent);
     topOutput.textContent += output.textContent;
-    topOutput.textContent += ' =';
-    output.textContent = operate(equation.sign, equation.operands[0], equation.operands[1]);
+    // result is added to the 0 index in operands | will only show if it is called by the 'equals' button | see line 85-88
+    equation.operands[0] = operate(equation.sign, equation.operands[0], equation.operands[1]);
+    equation.result = equation.operands[0];
+    output.textContent = equation.operands[0];
+    console.log(equation);
 }
 
 toggleEventListeners([equalsBtn], 'click', evaluate, 'add');

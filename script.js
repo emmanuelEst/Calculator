@@ -115,14 +115,26 @@ toggleEventListeners(signs, 'click', getNumberAndFormatOutputs, 'add');
 // equates expression
 const equalsBtn = document.querySelector('#equals-btn');
 function evaluate() {
-    equation.operands[1] = Number(output.textContent);
+    if (output.textContent === '') {
+        displayErrorMessage();
+    } else {
 
-    // result is added to the 0 index in operands | will only show if it is called by the 'equals' button | see line 85-88
-    equation.operands[0] = operate(equation.sign, equation.operands[0], equation.operands[1]);
-    equation.result = equation.operands[0];
+        equation.operands[1] = Number(output.textContent);
+        if (equation.operands[0] === undefined) {
+            output.textContent = `Result = ${output.textContent}`;
+        } else {
+            // result is added to the 0 index in operands | will only show if it is called by the 'equals' button | see line 85-88
+            equation.operands[0] = operate(equation.sign, equation.operands[0], equation.operands[1]);
+            equation.result = equation.operands[0];
 
-    output.textContent = equation.operands[0];
-
+            output.textContent = equation.operands[0];
+        }
+    }
 }
 
 toggleEventListeners([equalsBtn], 'click', evaluate, 'add');
+
+function displayErrorMessage() {
+    topOutput.textContent = '';
+    output.textContent = 'Error please operate with two numbers'
+}

@@ -1,3 +1,7 @@
+* {
+    font-family: Silkscreen, serif;
+}
+
 .title-section {
     text-align: center;
 }
@@ -33,9 +37,11 @@
 }
 
 #output {
-    height: 25px;
-    padding-top: 20px;
+    height: 35px;
+    padding-top: 5px;
+
     border-top: none;
+    font-size: 2rem;
 }
 
 #calculator-btns {
@@ -81,4 +87,9 @@
         "four five six"
         "one two three"
         "negative zero decimal";
+}
+
+.outer-buttons,
+.inner-buttons {
+    font-size: 1.5rem;
 }

@@ -36,32 +36,31 @@ body {
     align-items: center;
 }
 
+#output-wrapper {
+    background-color: #9DBD0F;
+    box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.84);
+    border: solid 2px black;
+}
+
 #top-output,
 #output {
-    width: 493px;
-    border: solid 1px black;
+    width: 491px;
     text-align: right;
     font-size: 1.3rem;
     padding-right: 5px;
 }
 
-#top-output,
-#output {
-    background-color: #9DBD0F;
-}
 
 #top-output {
     height: 25px;
-    padding-bottom: 20px;
-    border-bottom: none;
+    padding-bottom: 14px;
     color: #306230;
 }
 
 #output {
     height: 35px;
     padding-top: 5px;
-
-    border-top: none;
+    padding-bottom: 3px;
     font-size: 2rem;
 
     color: #0f380f;

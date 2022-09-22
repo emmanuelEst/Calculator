@@ -103,17 +103,25 @@ body {
     grid-area: divide;
 }
 
-#add-btn,
-#subtract-btn,
-#multiply-btn,
-#divide-btn {
+.signs {
     background-color: #ABABAB;
+}
+
+.signs:hover {
+    background-color: #999999;
+    cursor: pointer;
 }
 
 #equals-btn {
     grid-area: equals;
     background-color: #B8054D;
     color: white;
+}
+
+#equals-btn:hover,
+#clear-btn:hover {
+    background-color: #a80546;
+    cursor: pointer;
 }
 
 #num-buttons {
@@ -135,4 +143,9 @@ body {
 
 .inner-buttons {
     color: #222222;
+}
+
+.inner-buttons:hover {
+    background-color: #d0cbc6;
+    cursor: pointer;
 }

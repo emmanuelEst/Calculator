@@ -121,7 +121,8 @@ function evaluate() {
 
         equation.operands[1] = Number(output.textContent);
         if (equation.operands[1] === 0 && equation.sign === '/') {
-            output.textContent = 'Error: Cannot divide by zero';
+            topOutput.textContent = 'Error: Cannot divide by zero';
+            output.textContent = '';
             return;
         }
         if (equation.operands[0] === undefined) {
@@ -139,6 +140,6 @@ function evaluate() {
 toggleEventListeners([equalsBtn], 'click', evaluate, 'add');
 
 function displayErrorMessage() {
-    topOutput.textContent = '';
-    output.textContent = 'Error please operate with two numbers'
+    output.textContent = '';
+    topOutput.textContent = 'Error please operate with two numbers'
 }

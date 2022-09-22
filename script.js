@@ -45,10 +45,26 @@ const toggleEventListeners = (array, eventType, func, toggle) => {
 const output = document.querySelector('#output')
 const topOutput = document.querySelector('#top-output');
 const numberButtons = document.querySelectorAll('.number');
+const negative = document.querySelector('#negative');
+const decimal = document.querySelector('#decimal');
 toggleEventListeners(numberButtons, 'click', addText, 'add'); // adds event listeners to all buttons with a 'number' class
+toggleEventListeners([negative], 'click', addNegative, 'add'); // negative special case
+toggleEventListeners([decimal], 'click', addDecimal, 'add'); // decimal special case
 
 function addText(event) {
     output.textContent += event.target.innerHTML;
+}
+
+// special case for negatives
+function addNegative(event) {
+    output.textContent += event.target.innerHTML;
+    toggleEventListeners([this], 'click', addNegative, 'remove');
+}
+
+// special case for decimals
+function addDecimal(event) {
+    output.textContent += event.target.innerHTML;
+    toggleEventListeners([this], 'click', addDecimal, 'remove');
 }
 
 // clears the string text in 'output' div
@@ -67,6 +83,9 @@ const clearAll = () => {
 
     output.textContent = '';
     topOutput.textContent = '';
+
+    toggleEventListeners([negative], 'click', addNegative, 'add');
+    toggleEventListeners([decimal], 'click', addDecimal, 'add');
 }
 toggleEventListeners([clearBtn], 'click', clearAll, 'add');
 
@@ -81,6 +100,8 @@ const equation = {
 // function retrieves number before the sign and the sign itself
 
 const getNumberAndFormatOutputs = (event) => {
+    toggleEventListeners([negative], 'click', addNegative, 'add');
+    toggleEventListeners([decimal], 'click', addDecimal, 'add');
     // Check allows for operator chaining
     if (equation.signCalledCheck === false) {
         // Adds the sign to the textContent | does not get show in output | is shown with line 80 but in topOutput

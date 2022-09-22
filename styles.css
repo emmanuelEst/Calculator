@@ -19,6 +19,7 @@ body {
 
 #subtext {
     font-size: 1.2rem;
+    color: #222222;
 }
 
 #calc-body {
@@ -75,11 +76,16 @@ body {
         "numbers numbers numbers equals";
     width: 500px;
     height: 500px;
+    margin-top: 5px;
+    row-gap: 5px;
+    column-gap: 5px;
 
 }
 
 #clear-btn {
     grid-area: clear;
+    background-color: #B8054D;
+    color: white;
 }
 
 #add-btn {
@@ -98,8 +104,17 @@ body {
     grid-area: divide;
 }
 
+#add-btn,
+#subtract-btn,
+#multiply-btn,
+#divide-btn {
+    background-color: #ABABAB;
+}
+
 #equals-btn {
     grid-area: equals;
+    background-color: #B8054D;
+    color: white;
 }
 
 #num-buttons {
@@ -109,9 +124,16 @@ body {
         "four five six"
         "one two three"
         "negative zero decimal";
+    row-gap: 5px;
+    column-gap: 5px;
 }
 
 .outer-buttons,
 .inner-buttons {
     font-size: 1.5rem;
+    border: solid 2px black;
+}
+
+.inner-buttons {
+    color: #222222;
 }
